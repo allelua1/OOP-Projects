@@ -30,8 +30,8 @@ class Account(ABC):
 
     def get_transaction_history(self):
         return self.transaction_history
-account = Account(123, "Allelua", 300)
-print(account.deposit(200))
-for t in account.get_transaction_history():
-    print(t)
+# account = Account(123, "Allelua", 300)
+# print(account.deposit(200))
+# for t in account.get_transaction_history():
+#     print(t)
 

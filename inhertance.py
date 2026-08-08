@@ -121,4 +121,54 @@ student = Student("Emile ")
 student.set_grade(83)
 print(student.get_grade())
 print(student.get_status())
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        print(f"Animal created: {self.name}")
+
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+        print("Dog breed set: {breed}")
+
+buddy = Dog("Buddy", "Golden Retriever")
+print(f"Name: {buddy.name}, Breed: {buddy.breed}")
         
+
+# shapr, circle, and square
+class Shape:
+    def __init__(self, color):
+          self.color = color
+    def area(self):
+        return 0
+    def describe(self):
+        print(f"This is a {self.color} shape")
+
+class Circle(Shape):
+    def __init__(self, color, radius):
+        super().__init__(color)
+        self.radius = radius
+    def area(self):
+        return 3.14 * self.radius **2
+    def describe(self):
+        print(f"This is a {self.color} circle with radius {self.radius}.")
+
+class Square(Shape):
+    def __init__(self, color, side):
+        super().__init__(color)
+        self.side = side
+    def area(self):
+        return self.side ** 2
+    def describe(self):
+        print(f"This is a {self.color} square with side length {self.side}")
+
+circle = Circle("red", 5)
+square = Square("Blue", 4)
+
+circle.describe()
+square.describe()
+
+print(f"Circle are: {circle.area()}")
+print(f"Square area: {square.area()}")

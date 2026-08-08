@@ -9,5 +9,5 @@ class Transaction:
         # Return formatted string representation of the transaction
     def __str__(self):
         return f"{self.transaction_type.title()} - ${self.amount:.2f}"
-transaction  = Transaction("saving", 3000, "S123")    
-print(transaction)
+# transaction  = Transaction("saving", 3000, "S123")    
+# print(transaction)

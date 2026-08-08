@@ -1,4 +1,4 @@
-import datetime
+""" import datetime
 class Patient:
     def __init__(self, patient_id, name, age, gender, disease):
         self.patient_id = patient_id
@@ -89,4 +89,81 @@ while True:
         break
     else:
         print("\n Invalid option. Please Select between 1 and 5.")
-        
+         """
+
+from hospital import Hospital
+from doctor import Doctor
+from patient import Patient
+from datetime import date
+
+# initialize Hospita
+hospital = Hospital("Nairobi General Hospital")
+
+doc1 = Doctor("PER001", "Benigne Ngerituje", 24, "Female",
+              "8977778898", "benigne@gmail.com", "Nairobi",
+              "D001", "Cardiologist", "Cardiology", 
+              "MD,MBBS", 15, ["MON", "WED", "FRI"], 30000)
+
+doc2 = Doctor ("PER002", "Diane Tuyishimire", 24, "Male",
+              "8977778898", "benigne@gmail.com", "Nairobi",
+              "D001", "Pediatrician", "padriatrics", 
+              "MBBS", 10, ["TUE", "THU", "SAT"], 250000)
+
+pat1 = Patient("PER003", "Brian Otieno", 29, "Male",
+               "0722000001", "brian@gmail.com", "Kisumu",
+               "PT001", "O+", ["Asthma"], ["Penicillin"],
+               "0733000001", "INS001", "2024-01-10")
+
+pat2 = Patient("PER004", "Grace Wanjiru", 34, "Female",
+               "0722000002", "grace@gmail.com", "Nairobi",
+               "PT002", "A+", [], [],
+               "0733000002", "INS002", "2024-01-15")
+
+hospital.add_doctor(doc1)
+hospital.add_doctor(doc2)
+hospital.add_patient(pat1)
+hospital.add_patient(pat2)
+
+
+while True:
+        print(f"\n{'='*40}")
+        print(f" {hospital.name.upper()}")
+        print(f"\n{'='*40}")
+        print("1. Doctors Menu")
+        print(" 2. Patient Menu")
+        print("3. Appointment Menu")
+        print("0. Exit")
+        print(f"\n{'='*40}")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            hospital.list_patient()
+            hospital.list_doctors()
+            patient_id = input("Enter Patient ID: ")
+            doctor_id = input("Enter Doctor ID: ")
+            date = input("Enter Date (YYY-MM-DD): ")
+            time = input("Enter Time(e.g 10:30 AM): ")
+            reason = input("Enter Reason: ")
+
+            hospital.book_appointment(patient_id, doctor_id, date, time, reason)
+
+        elif choice == "2":
+            hospital.list_appointment()
+            apt_id = input("Enter Appointment ID to cancel: ")
+            hospital.cancel_appointment(apt_id)
+
+        elif choice == "3":
+            hospital.list_appointment()
+
+        elif choice == "4":
+            hospital.list_doctors()
+            doc_id = input("Enter Doctor ID: ")
+            hospital.list_appointments_by_doctor(doc_id)
+        elif choice == "5":
+            hospital.list_patient()
+            pat_id = input("Enter Patient ID: ")
+            hospital.list_appointments_by_patient(pat_id)
+        elif choice == "0":
+            break
+    
